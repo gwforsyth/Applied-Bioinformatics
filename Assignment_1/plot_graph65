@@ -1,0 +1,7 @@
+> data<-scan("smoothed.txt")
+Read 781 items
+> plot(data)
+> pdf("/homes/gwforsyth/BS32010/Assignment_1/graph65.pdf")
+> plot(data)
+> dev.off()
+
