@@ -1,0 +1,10 @@
+#These were the commands used in R to plot the graph of the smoothed graph data
+#Assign data to entries in the smoothed text file
+> data<-scan("smoothed.txt")
+#create a pdf file to save the graph to
+> pdf("/homes/gwforsyth/BS32010/Assignment_1/graph60.pdf")
+#plot the data and the graph is then saved in the pdf
+> plot(data)
+#close the pdf file
+> dev.off()
+
