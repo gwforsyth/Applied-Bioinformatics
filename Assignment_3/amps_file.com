@@ -1,0 +1,9 @@
+output_file=sequence1.out
+print_horizontal=
+mode=pairwise
+matrix_file=md.mat
+pairwise_random=100,100,1
+gap_penalty=8
+constant=8
+seq_file=assignment.pir
+pairwise_align_file=sequence1.fasta
