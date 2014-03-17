@@ -1,0 +1,56 @@
+1----------------------------------------------------------------------------------------------------------------------------------
+ ------------------------------                          M U L T A L I G N                          -------------------------------
+ ----------------------------------------------------------------------------------------------------------------------------------
+ ------------------------------                                 by                                  -------------------------------
+ ------------------------------          Geoffrey J. Barton - geoff@compbio.dundee.ac.uk            -------------------------------
+ ------------------------------                   http://www.compbio.dundee.ac.uk                   -------------------------------
+ ----------------------------------------------------------------------------------------------------------------------------------
+ ------------------------------                            Please cite:                             -------------------------------
+ ------------------------------      Barton, G. J. (1990) Methods in Enzymology 183, 403-428.       -------------------------------
+ ------------------------------                      and also as appropriate:                       -------------------------------
+ ----------       Multiple alignment: Barton, G. J. and Sternberg, M. J. E. (1987), J. Mol. Biol., 198, 327-337.        -----------
+ ----------        Flexible Patterns: Barton, G. J. and Sternberg, M. J. E. (1990), J. Mol. Biol., 212, 389-402.        -----------
+ ----------   Structure Dependent Gap-Penalties: Barton, G. J. and Sternberg, M. J. E. (1987), Prot. Eng., 1, 89-94.    -----------
+ ----------------------------------------------------------------------------------------------------------------------------------
+ !!!!!!!!!!!!!!!!!!!!                       Copyright (c) Geoffrey J Barton (1987,1997)                       !!!!!!!!!!!!!!!!!!!!!
+ ----------------------------------------------------------------------------------------------------------------------------------
+ Multalign Version D2.3a - November 2003
+ Maximum allowed sequence length =  5000
+ Maximum pattern length          =  5000
+ Maximum number of sequences     =  5000
+ Horizontal format output selected
+ ---------------------------------
+ ----------------
+ matrix file read
+ Mutation Data Matrix (250 PAMs)                                                 
+ -------------------------------
+ Pairwise randomizations defined
+ Min:  100 Max:  100 Increment:    1
+ Gap penalty :     8.00
+ ----------------------
+ Constant :    8
+ ---------------
+ Sequence file : assignment.pir
+ ------------------------------
+
+ Will write alignments to file sequence1rand.fasta
+ -------------------------------------------------
+  
+ PAIRWISE mode has been defined
+  
+ Checking minimal command set
+ ----------------------------
+ --------------------------------------------
+ No checking currently performed in this mode
+ --------------------------------------------
+ Commands satisfy this mode..
+ ----------------------------
+ ------------------------------
+ Sequences defined in SEQ file:
+ ------------------------------
+ Index   Identifier   Length                            Name                            File order     Score     with
+     1   >P1;sp|P02186|MYG_EL   154 Myoglobin OS=Elephas maximus GN=MB PE=1 SV=3                         0      0.00         0
+     2   >P1;sp|P03298|ICP18_   157 Immediate-early protein ICP-18 OS=Frog virus 3 (isolate Goor         0      0.00         0
+     I    J ILEN JLEN     MATCH  NGAPS  NALIG NIDENT    %IDENT       NAS     NASAL  NRANS     RMEAN     STDEV     SCORE
+     1    2  154  157   1201.00      3    152     20     13.16    790.13    774.34    100   1194.64     20.17      0.32      1
+ Times: TOTAL:      0.437 USER :      0.308 SYSTEM:     0.129
