@@ -1,0 +1,13 @@
+rld<-rlogTransformation(dds, blind=TRUE)
+vsd<-varianceStabilizingTransformation(dds, blind=TRUE)
+library("vsn")
+par(mfrow=c(1,3))
+notAllZero<-(rowSums(counts(dds))>0)
+meanSdPlot(log2(counts(dds,normalized=TRUE)[notAllZero,]+1),ylim=c(0,2.5))
+meanSdPlot(assay(rld[notAllZero,]),ylim=c(0,2.5))
+meanSdPlot(assay(vsd[notAllZero,]),ylim=c(0,2.5))
+library("RColorBrewer")
+library("gplots")
+select<-order(rowMeans(counts(dds, normalized=TRUE)),decreasing=TRUE)[1:30]
+hmcol<-colorRampPalette(brewer.pal(9, "GnBu"))(100)
+heatmap.2(counts(dds,normalized=TRUE)[select,], col=hmcol, Rowv=FALSE, Colv=FALSE, scale="none", dendrogram="none", trace="none", margin=c(10,6))
