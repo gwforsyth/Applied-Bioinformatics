@@ -3,25 +3,25 @@ require(RCurl)
 require(biomaRt)
 require(stringr)
 
-geneCounts<-read.delim("/homes/gwforsyth/BS32010/project/RNAseqCounts.txt",
-                       head=T,sep="\t",skip=1, row.names=1)
+#geneCounts<-read.delim("/homes/gwforsyth/BS32010/project/RNAseqCounts.txt",
+#                       head=T,sep="\t",skip=1, row.names=1)
 
-#geneCounts<-read.delim("/home/gwforsyth/Applied-Bioinformatics/project/RNAseqCounts.txt",
-#                       head=T, sep="\t",skip=1, row.names=1)
+geneCounts<-read.delim("/home/gwforsyth/Applied-Bioinformatics/project/RNAseqCounts.txt",
+                       head=T, sep="\t",skip=1, row.names=1)
 
 nonZeroCounts<-geneCounts[rowSums(geneCounts[,6:28])>0,6:28]
 
 # l is plus, n is minus
-treatments <- as.factor(str_sub(colnames(nonZeroCounts),-7,-7))
+treatments <- as.factor(str_sub(colnames(nonZeroCounts),-9,-5))
 
 dds <- DESeqDataSetFromMatrix(as.matrix(nonZeroCounts),
                               as.data.frame(treatments),
                               design=~treatments)
 
-dds$treatments <- relevel(dds$treatments,"n" )
+dds$treatments <- relevel(dds$treatments,"minus","_plus")
 
 dds <- DESeq(dds)
-
+plotMA(dds, main="DESeq2")
 DEresults <- results(dds)
 
 # get annotations
@@ -43,3 +43,4 @@ annotResults <- merge(annot,DEresults,by.x="ensembl_gene_id",by.y="row.names")
 head(annotResults)
 write.table(annotResults, "annotResults.txt", sep="\t", quote=FALSE)
 return(annotResults)
+
