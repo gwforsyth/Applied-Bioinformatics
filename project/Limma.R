@@ -51,8 +51,8 @@ library(limma)
 
 .getData <- function()
 {
- baseDir <- "/homes/gwforsyth/BS32010/project/"
- #baseDir <- "/home/gwforsyth/Applied-Bioinformatics/project/"
+ #baseDir <- "/homes/gwforsyth/BS32010/project/"
+ baseDir <- "/home/gwforsyth/Applied-Bioinformatics/project/"
   workingDir=paste0(baseDir)
   
   filenames <- c("ROS1-_9.CEL", "ROS1+_10.CEL", "ROS2-_11.CEL", 
@@ -148,12 +148,11 @@ library(limma)
   # fit the linear model to the filtered expression set
   fit <- lmFit(exprs(eset), design)
   ebFit <- eBayes(fit)
- # ttab <- topTable(ebFit, number=30000, coef=1)
-
-  #nrow(topTable(ebFit, coef=1, number=30000, lfc=5))
-  #nrow(topTable(ebFit, coef=1, number=30000, lfc=4))
-  #nrow(topTable(ebFit, coef=1, number=30000, lfc=3))
-  #nrow(topTable(ebFit, coef=1, number=30000, lfc=2))
+  ttab <- topTable(ebFit, number=30000, coef=1)
+  nrow(topTable(ebFit, coef=1, number=30000, lfc=5))
+  nrow(topTable(ebFit, coef=1, number=30000, lfc=4))
+  nrow(topTable(ebFit, coef=1, number=30000, lfc=3))
+  nrow(topTable(ebFit, coef=1, number=30000, lfc=2))
   # Get a list for probesets with a four fold change or more
   tTable <- topTable(ebFit, number=30000,  p.value=0.05)
   #return(tTable)
@@ -181,4 +180,6 @@ if(!exists("celResults"))
   celFilt <- .doFilter(celRMA)
   celResults <- .doDE(celFilt$eset)
 }
+
+sortLimma<-head(celResults[order(celResults$adj.P.Val),])
 
