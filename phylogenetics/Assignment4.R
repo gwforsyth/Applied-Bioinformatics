@@ -18,8 +18,6 @@ x<-read.dna("dolphin.fasta", format="fasta")
 d<-dist.dna(x)
 #output the matrus to a file for  posterity
 write.table(as.matrix(d),"distances.csv")
-d2<-dist.dna(x, model="GG95")
-write.table(as.matrix(d2),"distances2.csv")
 
 #construct a tree using the data and the distance matrix (d)
 tr.upgma<-upgma(d)
@@ -82,7 +80,7 @@ plot(dt.fastme-d,ylab="residuals", cex=0.5,main="fastme")
 abline(h=0,lty=3)
 
 #fit the data using pml
-#fit<-pml(tr.upgma,as.phyDat(x))
+#fit<-pml(tr.bionj,as.phyDat(x))
 #optimise, plot and set a random seed for the bootstrap process
 #fit=optim.pml(fit,T)
 #plot(fit)
@@ -94,6 +92,22 @@ abline(h=0,lty=3)
 
 #substitution models
 mt<-modelTest(as.phyDat(x),G=F, I=F)
+
+#fit the data using pml
+fittedtreeHKY<-pml(tr.bionj,as.phyDat(x),model="HKY")
+#optimise, plot and set a random seed for the bootstrap process
+#fit=optim.pml(fit,T)
+#plot(fittedtreeHKY)
+##bootstrap the data tree
+#bs<-bootstrap.pml(fittedtreeHKY,bs=100,optNni=T)
+#plot the fitted results
+#plotBS(fit$tree,type="fan",bs)
+
+#dt.fittedtreeHKY<-cophenetic(fittedtreeHKY$tree)
+#dt.fittedtreeHKY<-dt.fittedtreeHKY[nms,nms]
+#dt.fittedtreeHKY<-as.dist(dt.fittedtreeHKY)
+#plot(dt.fittedtreeHKY-d,ylab="residuals", cex=0.5,main="HKY")
+#abline(h=0,lty=3)
 
 #evolutionary distinctiveness
 orig<-evol.distinct(tr.upgmar, type="fair.proportion")
