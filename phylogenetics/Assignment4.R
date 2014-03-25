@@ -31,11 +31,13 @@ plot(tr.nj, main="nj", cex=0.3)
 plot(tr.bionj, main="bionj", cex=0.3)
 plot(tr.fastme, main="fastme", cex=0.3)
 
+#root the trees
 tr.upgmar<-root(tr.upgma, outgroup="EF092950.1/1-321")
 tr.njr<-root(tr.nj, outgroup="EF092950.1/1-321")
 tr.bionjr<-root(tr.bionj, outgroup="EF092950.1/1-321")
 tr.fastmer<-root(tr.fastme, outgroup="EF092950.1/1-321")
 
+#plot the rooted trees
 plot(tr.upgmar,main="upgmar", cex=0.3);nodelabels(,cex=0.3, frame="circle", bg="yellow"); 
 plot(tr.njr,main="njr", cex=0.3);nodelabels(, cex=0.3, frame="circle", bg="blue");
 plot(tr.bionjr,main="bionjr", cex=0.3);nodelabels(, cex=0.3, frame="circle", bg="green");
@@ -93,7 +95,7 @@ treeBS<-plotBS(fit$tree,type="p", bs, cex=0.2, main="bootstapped fitted tree")
 #substitution models
 mt<-modelTest(as.phyDat(x),G=F, I=F)
 
-#fit the data using pml
+#fit the data using pml for the HKY model
 fittedtreeHKY<-pml(tr.bionj,as.phyDat(x),model="HKY")
 #optimise, plot and set a random seed for the bootstrap process
 fit=optim.pml(fittedtreeHKY,T)
