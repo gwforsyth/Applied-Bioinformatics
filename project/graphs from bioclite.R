@@ -18,7 +18,7 @@ dev.off()
 library("RColorBrewer")
 library("gplots")
 select<-order(rowMeans(counts(dds, normalized=TRUE)),decreasing=TRUE)[1:30]
-hmcol<-colorRampPalette(brewer.pal(9, "GnBu"))(100)
+hmcol<-colorRampPalette(brewer.pal(9, "Purples"))(100)
 png(file="rawcounts.png")
 heatmap.2(counts(dds,normalized=TRUE)[select,], col=hmcol, 
           Rowv=FALSE, Colv=FALSE, scale="none", 
@@ -40,7 +40,7 @@ dev.off()
 #heatmap of the sample-to-samples distances
 distsRL<-dist(t(assay(rld)))
 mat<-as.matrix(distsRL)
-rownames(mat)<-colnames(mat) <- with(colData(dds),paste(treatments, type, sep=" : "))
+rownames(mat)<-colnames(mat) <- with(colData(dds),paste(treatments, sep=" : "))
 png(file="heatmap2.png")
 heatmap.2(mat, trace="none", col=rev(hmcol), margin=c(13,13))
 dev.off()
@@ -49,3 +49,4 @@ dev.off()
 png(file="principal_component_plot.png")
 print(plotPCA(rld, intgroup=c("treatments")))
 dev.off()
+
