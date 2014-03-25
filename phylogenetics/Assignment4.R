@@ -80,15 +80,15 @@ plot(dt.fastme-d,ylab="residuals", cex=0.5,main="fastme")
 abline(h=0,lty=3)
 
 #fit the data using pml
-#fit<-pml(tr.bionj,as.phyDat(x))
+fit<-pml(tr.bionj,as.phyDat(x))
 #optimise, plot and set a random seed for the bootstrap process
-#fit=optim.pml(fit,T)
-#plot(fit)
-#set.seed(8)
+fit=optim.pml(fit,T)
+plot(fit, cex=0.3, main="fitted tree using default")
+set.seed(8)
 ##bootstrap the data tree
-#bs<-bootstrap.pml(fit,bs=100,optNni=T)
+bs<-bootstrap.pml(fit,bs=100,optNni=T)
 #plot the fitted results
-#treeBS<-plotBS(fit$tree,type="fan",bs)
+treeBS<-plotBS(fit$tree,type="p", bs, cex=0.2, main="bootstapped fitted tree")
 
 #substitution models
 mt<-modelTest(as.phyDat(x),G=F, I=F)
@@ -96,18 +96,18 @@ mt<-modelTest(as.phyDat(x),G=F, I=F)
 #fit the data using pml
 fittedtreeHKY<-pml(tr.bionj,as.phyDat(x),model="HKY")
 #optimise, plot and set a random seed for the bootstrap process
-#fit=optim.pml(fit,T)
-#plot(fittedtreeHKY)
-##bootstrap the data tree
-#bs<-bootstrap.pml(fittedtreeHKY,bs=100,optNni=T)
+fit=optim.pml(fittedtreeHKY,T)
+plot(fittedtreeHKY, cex=0.3, main="fitted tree using HKY")
+#bootstrap the data tree
+bs<-bootstrap.pml(fittedtreeHKY,bs=100,optNni=T)
 #plot the fitted results
-#plotBS(fit$tree,type="fan",bs)
+plotBS(fittedtreeHKY$tree,type="p",bs, cex=0.2, main="bootstrapped fitted by HKY tree")
 
-#dt.fittedtreeHKY<-cophenetic(fittedtreeHKY$tree)
-#dt.fittedtreeHKY<-dt.fittedtreeHKY[nms,nms]
-#dt.fittedtreeHKY<-as.dist(dt.fittedtreeHKY)
-#plot(dt.fittedtreeHKY-d,ylab="residuals", cex=0.5,main="HKY")
-#abline(h=0,lty=3)
+dt.fittedtreeHKY<-cophenetic(fittedtreeHKY$tree)
+dt.fittedtreeHKY<-dt.fittedtreeHKY[nms,nms]
+dt.fittedtreeHKY<-as.dist(dt.fittedtreeHKY)
+plot(dt.fittedtreeHKY-d,ylab="residuals", cex=0.5,main="HKY")
+abline(h=0,lty=3)
 
 #evolutionary distinctiveness
 orig<-evol.distinct(tr.upgmar, type="fair.proportion")
