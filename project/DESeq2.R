@@ -3,11 +3,11 @@ require(RCurl)
 require(biomaRt)
 require(stringr)
 
-geneCounts<-read.delim("/homes/gwforsyth/BS32010/project/RNAseqCounts.txt",
-                       head=T,sep="\t",skip=1, row.names=1)
+#geneCounts<-read.delim("/homes/gwforsyth/BS32010/project/RNAseqCounts.txt",
+#                       head=T,sep="\t",skip=1, row.names=1)
 
-#geneCounts<-read.delim("/home/gwforsyth/Applied-Bioinformatics/project/RNAseqCounts.txt",
-#                       head=T, sep="\t",skip=1, row.names=1)
+geneCounts<-read.delim("/home/gwforsyth/Applied-Bioinformatics/project/RNAseqCounts.txt",
+                      head=T, sep="\t",skip=1, row.names=1)
 
 nonZeroCounts<-geneCounts[rowSums(geneCounts[,6:28])>0,6:28]
 
@@ -45,3 +45,4 @@ head(annotResults)
 write.table(annotResults, "annotResults.txt", sep="\t", quote=FALSE)
 return(annotResults)
 
+sortDE<-head(annotResults[order(annotResults$padj),])

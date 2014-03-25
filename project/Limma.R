@@ -54,7 +54,6 @@ library(limma)
  #baseDir <- "/homes/gwforsyth/BS32010/project/"
  baseDir <- "/home/gwforsyth/Applied-Bioinformatics/project/"
   workingDir=paste0(baseDir)
-  
   filenames <- c("ROS1-_9.CEL", "ROS1+_10.CEL", "ROS2-_11.CEL", 
                  "ROS2+_12.CEL", "ROS3-_13.CEL", "ROS3+_14.CEL",
                  "ROS4-_15.CEL", "ROS4+_16.CEL")
@@ -64,12 +63,10 @@ library(limma)
   targets<-c("minus","plus","minus","plus","minus","plus", "minus", "plus")
   phenodata<-as.data.frame(cbind(filenames,samplenames,targets))
   write.table(phenodata,paste(workingDir,"phenodata.txt",sep="/")
-              ,quote=F,row.name=F)
-  celRAW <- ReadAffy(celfile.path=workingDir,compress=T,
-                     phenoData=phenodata)
-  #arrayQualityMetrics(expressionset=celRAW,
-  #										outdir=paste0(baseDir,"celRAW_AQM"),
-  #										force=T,do.logtransform=T)
+              ,quote=F, row.names=F)
+  celRAW <- ReadAffy(celfile.path=workingDir,compress=T)
+  pData(celRAW)<-merge(pData(celRAW), phenodata, by.x="row.names", by.y="filenames")
+ 
 }
 
 .plotDensity <- function(exps,filename)
@@ -180,6 +177,4 @@ if(!exists("celResults"))
   celFilt <- .doFilter(celRMA)
   celResults <- .doDE(celFilt$eset)
 }
-
-sortLimma<-head(celResults[order(celResults$adj.P.Val),])
 
