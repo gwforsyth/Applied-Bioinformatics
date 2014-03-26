@@ -49,8 +49,45 @@ bs<-bootstrap.pml(fit,bs=100,optNni=T)
 #plot the fitted results
 treeBS<-plotBS(fit$tree,type="p", bs, cex=0.2, main="bootstapped fitted tree")
 
+par(mfrow=c(2,2))
 #substitution models
+dt.upgma<-cophenetic(tr.upgma)
+#pull out the taxa data from (d) as a matrix and place it in a data.frames called (dmat)
+dmat<-as.matrix(d)
+#pull out the rownames of dmat and place it in a value called (nms)
+nms<-rownames(dmat)
+#update cophenetic analysis with the rownames
+dt.upgma<-dt.upgma[nms,nms]
+#calculate the distances 
+dt.upgma<-as.dist(dt.upgma)
+#plot the new distances with the original distances subtracted to get the residuals
+plot(dt.upgma-d,ylab="residuals", cex=0.5,main="UPGMA")
+abline(h=0,lty=3)
 
+
+dt.nj<-cophenetic(tr.nj)
+dmat<-as.matrix(d)
+nms<-rownames(dmat)
+dt.nj<-dt.nj[nms,nms]
+dt.nj<-as.dist(dt.nj)
+plot(dt.nj-d,ylab="residuals", cex=0.5,main="neighbour-joining")
+abline(h=0,lty=3)
+
+dt.bionj<-cophenetic(tr.bionj)
+dmat<-as.matrix(d)
+nms<-rownames(dmat)
+dt.bionj<-dt.bionj[nms,nms]
+dt.bionj<-as.dist(dt.bionj)
+plot(dt.bionj-d,ylab="residuals", cex=0.5,main="bionj")
+abline(h=0,lty=3)
+
+dt.fastme<-cophenetic(tr.fastme)
+dmat<-as.matrix(d)
+nms<-rownames(dmat)
+dt.fastme<-dt.fastme[nms,nms]
+dt.fastme<-as.dist(dt.fastme)
+plot(dt.fastme-d,ylab="residuals", cex=0.5,main="fastme")
+abline(h=0,lty=3)
 mt<-modelTest(as.phyDat(x),G=F, I=F)
 
 #evolutionary distinctiveness
