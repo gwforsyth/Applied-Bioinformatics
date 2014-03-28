@@ -1,0 +1,9 @@
+Important files
+
+The wga-out folder contains the results of comparative genomics
+
+The script used in Xming for computing BLASTN, megaBLAST and MUMmer can be found in history.txt
+
+The two png files are the output of ACT
+
+The .fa files contain the regions of the chicken and duck genomes to be compared

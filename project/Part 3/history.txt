@@ -1,0 +1,13 @@
+
+  974  blastn -query chick21.fa -subject duckgene.fa -outfmt 6 -out wga_output/project_megablast.tab -task megablast
+  975  blastn -query chick21.fa -subject duckgene.fa -outfmt 6 -out wga_output/project_blastn.tab -task blastn
+
+  976  time mummer -mum -b -c chick21.fa duckgene.fa >wga_output/project_mummer.mums
+ 
+  982  mummerplot --png wga_output/project_mummer.mums
+
+  993  act
+  994  python ../scripts/nucmer_to_crunch.py -i wga_output/nucmer.coords -o wga_output/nucmer.crunch -v
+  995  python nucmer_to_crunch.py -i wga_output/nucmer.coords -o wga_output/nucmer.crunch -v
+  996  ipython notebook --pylab inline
+  

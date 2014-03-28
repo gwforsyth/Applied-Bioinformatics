@@ -1,0 +1,289 @@
+  737  cd Asssignment/3
+  738  cd Asssignment_3
+  739  nano README.md
+  740  ls
+  741  git add Assignment_3/README.md
+  742  git commit -m "readme file"
+  743  git push 
+  744  cd BS32010
+  745  git init
+  746  mkdir project
+  747  git add project
+  748  git commit -m "project directory"
+  749  cd project
+  750  cp /usr/local/share/BS32010/expression/data/GSOC_Cel/ROS*.CEL
+  751  cp /usr/local/share/BS32010/expression/data/GSOC_Cel/ROS*.CEL .
+  752  cp /usr/local/share/BS32010/expression/data/GCOS_Cel/ROS*.CEL .
+  753  ls
+  754  wget http://www.compbio.dundee.ac.uk/user/pschofield/Teaching/Bioinformatics/Code/example.R.html
+  755  ls
+  756  nano example.R.html 
+  757  wget http://www.compbio.dundee.ac.uk/user/pschofield/Teaching/Bioinformatics/Code/example.R
+  758  ls
+  759  rm -rf example.R.html
+  760  ;s
+  761  ls
+  762  wget http://www.compbio.dundee.ac.uk/user/pschofield/Teaching/Bioinformatics/Code/rnaseq.R
+  763  cp /usr/local/share/BS32010/expression/data/RNAseqCounts.txt .
+  764  ls
+  765  wget http://www.compbio.dundee.ac.uk/user/pschofield/Teaching/Bioinformatics/Code/rnaseq.R
+  766  cd BS32010/project
+  767  ls
+  768  cd BS32010
+  769  git init
+  770  git add project/*.CEL
+  771  git commit -m "Roscovitine samples for limma analysis"
+  772  git add project/limma_analysis.R
+  773  git commit -m "limma analysis script. Templates line needs modifying"
+  774  git add project/example.R
+  775  git commit -m "DESeq2 analysis script. doDE function needs modifying"
+  776  git add project/*.pdf
+  777  git commit -m "the graphs produced by the DESeq2 script"
+  778  git add project/RNAseqCounts.txt 
+  779  git commit -m "the file for analysis with DESeq2"
+  780  git add project/results.txt 
+  781  git commit -m "a product of DESeq2 in example.R"
+  782  git add project/phenodata.txt 
+  783  git commit -m "a product of DESeq2 in example.R"
+  784  git push
+  785  git pull
+  786  git push
+  787  git status
+  788  cd BS32010
+  789  git init
+  790  git status
+  791  git add project/Limma.R
+  792  git commit -m "removed contrast matrix section since not need.  Script runs with Cstack usage is too close to limit"
+  793  git add project/DEseq2.R
+  794  git add project/DESeq2.R
+  795  git commit -m "tried to get templates to be plus, minus, plus ... instead of x,x,x... but wasn't successful" 
+  796  git push
+  797  git status
+  798  cd BS32010
+  799  ls
+  800  git init
+  801  git pull
+  802  git merge
+  803  git pull
+  804  git status
+  805  git checkout -- project/*
+  806  git commit -m "a"
+  807  git pull
+  808  cd project
+  809  ls
+  810  cd ..
+  811  cd phylogenetics/
+  812  ls
+  813  cp dolphin_mtdna_dloop.fasta dolphin.fasta
+  814  ls
+  815  cd BS32010/phylogenetics/
+  816  mb
+  817  vi dolphin.nexus
+  818  cd BS32010/project/
+  819  ls
+  820  cd ..
+  821  git init
+  822  git status
+  823  git add project/Limma.R
+  824  git commit -m "working script from xming R"
+  825  git add project/DESeq2.R
+  826  git commit -m "working script from xming R"
+  827  git add phylogenetics/
+  828  git commit -m "files for assignment 4"
+  829  git push
+  830  cd BS32010
+  831  ls
+  832  git init
+  833  git pull
+  834  cd phylogenetics
+  835  ls
+  836  sed -e"se/'//g"-e's!/[^ ]*!!'<dolphin.nexus>dolphin2.nexus
+  837  sed -e"s/'//g"-e's!/[^ ]*!!'<dolphin.nexus>dolphin2.nexus
+  838  sed -e"s/'//g"-e's!/[^]*!!'<dolphin.nexus>dolphin2.nexus
+  839  sed -e "s/'//g" -e's!/[^ ]*!!'<dolphin.nexus>dolphin2.nexus
+  840  ls
+  841  mb
+  842  ls
+  843  *.tre
+  844  more dolphin2.nexus.con.tre
+  845  mb
+  846  cd BS32010/phylogenetics/
+  847  ls
+  848  more dolphin2.nexus.mcmc
+  849  ls
+  850  more dolphin2.nexus.con.tre
+  851  mb
+  852  cd BS32010
+  853  git init
+  854  git status
+  855  git add phylogenetics/*
+  856  git commit -m "results of mr Bayes"
+  857  git add project/*.png
+  858  git commit ("graphs to help with analysis from DESeq2")
+  859  git commit -m "graphs to help with analysis from DESeq2"
+  860  git add project/DESeq2.R
+  861  git commit -m "chosen minus in templates since ita the untreated samples"
+  862  git status
+  863  git add "project/graphs from bioclite.R" 
+  864  git commit -m "added in heatmaps"
+  865  git push
+  866  ls
+  867  cd BS32010
+  868  git init
+  869  git pull
+  870  ls
+  871  cd ls Comparative_Genomics/
+  872  cd Comparative_Genomics/
+  873  ls
+  874  cd Part_1
+  875  ls
+  876  cd whole_genome_alignment/
+  877  ls
+  878  nano whole_genome_alignments_A_Uod.ms
+  879  nano whole_genome_alignments_A_Uod.md
+  880  nano whole_genome_alignments_A.Uod.md
+  881  nano whole_genome_alignments_A.UoD.md
+  882  nano whole_genome_alignments_A_UoD.md
+  883  cd ..
+  884  cd..
+  885  cd ..
+  886  ls 
+  887  cd project
+  888  ls
+  889  mkdir wga_output
+  890  time blastn -query ../data/NC_002695.fna -subject ../data/NC_004431.fna -outfmt 6 -out wga_output/E_coli_blastn.tab
+  891  time blastn -query chicken.fasta -subject bushbaby -outfmt 6 -out wga_output/project_blastn.tab
+  892  time blastn -query chicken.fasta -subject bushbaby.fasta -outfmt 6 -out wga_output/project_blastn.tab
+  893  time blastn -query chicken.fasta -subject bushbaby.fasta -outfmt 6 -out wga_output/project_megablast.tab -task megablast
+  894  time blastn -query chicken.fasta -subject bushbaby.fasta -outfmt 6 -out wga_output/project_dc-megablast.tab -task dc-megablast
+  895  time blastn -query chicken.fasta -subject bushbaby.fasta -outfmt 6 -out wga_output/project_blastn.tab -task blastn
+  896  time blastn -query chicken.fasta -subject bushbaby.fasta -outfmt 6 -out wga_output/project_megablast.tab -task megablast
+  897  time blastn -query chicken.fasta -subject bushbaby.fasta -outfmt 6 -out wga_output/project_megablastn.tab -task megablastn
+  898  time blastn -query chicken.fasta -subject bushbaby.fasta -outfmt 6 -out wga_output/project_megablast.tab -task megablast
+  899  cd wga_output/
+  900  head project_blastn.tab
+  901  blastn
+  902  cd BS32010/project
+  903  ls
+  904  gunzip Anas_platyrhynchos.BGI_duck_1.0.75.dna.nonchromosomal.fa.g
+  905  gunzip Gallus_gallus.Galgal4.75.dna.chromosome.21.fa.gz 
+  906  time blastn -query chicken_chrom21.fa -subject duck_genome.fa -outfmt 6 -out wga_output/project_blastn.tab -task blastn
+  907  time blastn -query chicken_chrom21.fa -subject duck_genome.fa -outfmt 6 -out wga_output/project_megablast.tab -task megablast
+  908  time mummer -m -b -c chicken_chrom21.fa duck_genome.fa >wga_output/project_mummer.mums
+  909  time mummer -mum -b -c chicken_chrom21.fa duck_genome.fa >wga_output/project_mummer.mums
+  910  time blastn -query chicken_chrom21.fa -subject duck_genome.fa -outfmt 6 -out wga_output/project_blastn.tab -task blastn
+  911  time mummer -mum -b -c chicken_chrom21.fa duck_genome.fa >wga_output/project_mummer.mums
+  912  time blastn -query chicken_chrom21.fa -subject duck_genome.fa -outfmt 6 -out wga_output/project_blastn.tab -task blastn
+  913  cd ..
+  914  git init
+  915  git status
+  916  git add project/Limma.R
+  917  git commit -m "A fully working script"
+  918  git add project/Limma_sorted.txt
+  919  git commit -m "table showing top 6 genes with lowest p-adj values -the most significant"
+  920  git add project/DE_table.txt
+  921  git commit -m "table showing top 6 genes with lowest p-adj values -the most significant"
+  922  git add phylogenetics/Assignment4.R 
+  923  git commit -m "script for assignment 4"
+  924  git add project/*.fasta
+  925  git commit -m "MMEL1 homologoes"
+  926  git push
+  927  git init
+  928  git status
+  929  git add project/aligned.fasta
+  930  git commit -m "fasta for building tree"
+  931  git add project/*.fa
+  932  git add project/*.png
+  933  git commit -m "graphs to help with analysis"
+  934  git add "project/graphs from bioclite.R" 
+  935  git commit -m "updated color package"
+  936  git add project/*.pdf
+  937  git commit -m "most recent versions"
+  938  git add project/results.txt
+  939  git commit -m "most recent version"
+  940  git add project/Trees.R
+  941  git commit -m "Tree drawing script"
+  942  git push
+  943  git status
+  944  git add project/DEseq2.R
+  945  git add project/DESeq2.R
+  946  git commit -m "added sort command for adjusted p vals"
+  947  git add project/tasmanian_devil.fatsa 
+  948  git commit -m "another MMEL1 fasta"
+  949  git add "project/cariance stablising transformations" 
+  950  git commit -m "graph"
+  951  git push
+  952  cd BS32010/project
+  953  ls
+  954  time mummer -mum -b -c chicken_chrom21.fa duck_genome.fa >wga_output/project_mummer.mums#
+  955  time mummer -mum -b -c chicken_chrom21.fa duck_genome.fa >wga_output/project_mummer.mums
+  956  cd
+  957  cd BS32010/project/
+  958  ls
+  959  more chicken_chrom21.fa 
+  960  top
+  961  cd BS32010/project
+  962  ls
+  963  blastn -query chick21.fa -subject duckgene.fa -outfmt 6 -out wga_output/project_blastn.tab -task blastn
+  964  blastn -query chick21.fa -subject duckgene.fa -outfmt 6 -out wga_output/project_megablast.tab -task megablast
+  965  time mummer -mum -b -c chicken_chrom21.fa duck_genome.fa >wga_output/project_mummer.mums
+  966  time mummer -mum -b -c chick21.fa duckgene.fa >wga_output/project_mummer.mums
+  967  mummerplot --png --prefix=wga_out/project_mummer wga_output/project_mummer.mums
+  968  wc wga/project_mummer.mums
+  969  wc wga_output/project_mummer.mums
+  970  mummerplot wga_output/project_mummer.mums
+  971  mummerplot --png --prefix=wga_out/project_mummer wga_output/project_mummer.mums
+  972  ls
+  973  time mummer -mum -b -c chicken_chrom21.fa duck_genome.fa >wga_output/project_mummer.mums
+  974  blastn -query chick21.fa -subject duckgene.fa -outfmt 6 -out wga_output/project_megablast.tab -task megablast
+  975  blastn -query chick21.fa -subject duckgene.fa -outfmt 6 -out wga_output/project_blastn.tab -task blastn
+  976  time mummer -mum -b -c chick21.fa duckgene.fa >wga_output/project_mummer.mums
+  977  mummerplot--png --prefix=wga_out/project_mummer wga_output/project_mummer.mums
+  978  mummerplot --png --prefix=wga_out/project_mummer wga_output/project_mummer.mums
+  979  mummerplot project_mummer.ums
+  980  mummerplot project_mummer.mums
+  981  mummerplot wga_output/project_mummer.mums
+  982  mummerplot --png wga_output/project_mummer.mums
+  983  nucmer --maxgap=500 --mincluster=100 --prefix=wga_output/nucmer chick21.fa duckgene.fa
+  984  show-coords -r wga_output/nucmer.delta > wga_output/nucmer.coords
+  985  show_aligns wga_output/nucmer.delta "chicken" "duck" > wga_output/nucmer.aligns
+  986  show-aligns wga_output/nucmer.delta "chicken" "duck" > wga_output/nucmer.aligns
+  987  nucmer --maxgap=500 --mincluster=100 --prefix=wga_output/nucmer chick21.fa duckgene.fa
+  988  show-coords -r wga_output/nucmer.delta > wga_output/nucmer.coords
+  989  show-aligns wga_output/nucmer.delta "chicken" "duck" > wga_output/nucmer.aligns
+  990  delta-filter -q -r wga_output/nucmer.delta > wga_output/nucmer.filter
+  991  mummerplot --png wga_putput/nucmer.filter -R chick21.fa -Q duckgene.fa --prefix=wga_output/nucmer
+  992  mummerplot --png wga_output/nucmer.filter -R chick21.fa -Q duckgene.fa --prefix=wga_output/nucmer
+  993  act
+  994  python ../scripts/nucmer_to_crunch.py -i wga_output/nucmer.coords -o wga_output/nucmer.crunch -v
+  995  python nucmer_to_crunch.py -i wga_output/nucmer.coords -o wga_output/nucmer.crunch -v
+  996  ipython notebook --pylab inline
+  997  cd BS32010/projecy
+  998  cd BS32010/project
+  999  git init
+ 1000  git status
+ 1001  cd ..
+ 1002  git status
+ 1003  git add project/wga_output/
+ 1004  git commit -m "genome alignment output"
+ 1005  git status
+ 1006  git add project/*.png
+ 1007  git commit -m "diagrams"
+ 1008  git add project/*.png
+ 1009  git commit -m "diagrams"
+ 1010  git push
+ 1011  git status
+ 1012  rm -rm project/chick21.fa~
+ 1013  rm -rf project/chick21.fa~
+ 1014  rm -rf project/duckgene.fa~
+ 1015  git add project/*.fa
+ 1016  git commit -m "fasta files for genome alignment"
+ 1017  git add project/variance_stablising_transformations.png 
+ 1018  git commit -m "diagram"
+ 1019  git status
+ 1020  git add project/treatments_treated_results.csv 
+ 1021  git commit -m "results"
+ 1022  git add project/nucmer_to_crunch.py 
+ 1023  git commit -m "needed for genome alignment"
+ 1024  git push
+ 1025  history
