@@ -1,7 +1,7 @@
 #install.packages("ape")
 #install.packages("phangorn")
 #install.packages("picante")
-install.packages("phytools")
+#install.packages("phytools")
 #load packages
 require(ape)
 require(phangorn)
@@ -23,10 +23,10 @@ tr.bionj<-bionj(d)
 tr.fastme<-fastme.bal(d,nni=T,spr=T,tbr=T)
 
 #plot the trees
-plot(tr.upgma, main="upgma", cex=0.5)
-plot(tr.nj, main="nj", cex=0.5)
-plot(tr.bionj, main="bionj", cex=0.5)
-plot(tr.fastme, main="fastme", cex=0.5)
+plot(tr.upgma, main="upgma", type="fan", cex=1)
+plot(tr.nj, main="nj", type="fan", cex=1)
+plot(tr.bionj, main="bionj",type="fan", cex=1)
+plot(tr.fastme, main="fastme",type="fan", cex=1)
 
 tr.upgmar<-root(tr.upgma, outgroup="chromosome:Galgal4:21:1386860:1412422:1/1-25563")
 tr.njr<-root(tr.nj, outgroup="chromosome:Galgal4:21:1386860:1412422:1/1-25563" )
@@ -39,15 +39,14 @@ plot(tr.bionjr,main="bionjr", cex=0.5);nodelabels(, cex=0.3, frame="circle", bg=
 plot(tr.fastmer, main="fastmer", cex=0.5);nodelabels(,cex=0.3, frame="circle", bg="red");
 
 #fit the data using pml
-fit<-pml(tr.bionj,as.phyDat(x))
+fit<-pml(tr.fastme,as.phyDat(x))
 #optimise, plot and set a random seed for the bootstrap process
 fit=optim.pml(fit,T)
-plot(fit, cex=0.3, main="fitted tree using default")
 set.seed(8)
 ##bootstrap the data tree
 bs<-bootstrap.pml(fit,bs=100,optNni=T)
 #plot the fitted results
-treeBS<-plotBS(fit$tree,type="p", bs, cex=0.2, main="bootstapped fitted tree")
+treeBS<-plotBS(fit$tree,type="p", bs, cex=1, main="bootstapped fitted tree")
 
 par(mfrow=c(2,2))
 #substitution models
@@ -61,7 +60,7 @@ dt.upgma<-dt.upgma[nms,nms]
 #calculate the distances 
 dt.upgma<-as.dist(dt.upgma)
 #plot the new distances with the original distances subtracted to get the residuals
-plot(dt.upgma-d,ylab="residuals", cex=0.5,main="UPGMA")
+plot(dt.upgma-d,ylab="residuals",ylim=c(-0.4,0.4), cex=0.5,main="UPGMA")
 abline(h=0,lty=3)
 
 
@@ -70,7 +69,7 @@ dmat<-as.matrix(d)
 nms<-rownames(dmat)
 dt.nj<-dt.nj[nms,nms]
 dt.nj<-as.dist(dt.nj)
-plot(dt.nj-d,ylab="residuals", cex=0.5,main="neighbour-joining")
+plot(dt.nj-d,ylab="residuals",ylim=c(-0.4,0.4), cex=0.5,main="neighbour-joining")
 abline(h=0,lty=3)
 
 dt.bionj<-cophenetic(tr.bionj)
@@ -78,7 +77,7 @@ dmat<-as.matrix(d)
 nms<-rownames(dmat)
 dt.bionj<-dt.bionj[nms,nms]
 dt.bionj<-as.dist(dt.bionj)
-plot(dt.bionj-d,ylab="residuals", cex=0.5,main="bionj")
+plot(dt.bionj-d,ylab="residuals",ylim=c(-0.4,0.4),cex=0.5,main="bionj")
 abline(h=0,lty=3)
 
 dt.fastme<-cophenetic(tr.fastme)
@@ -86,7 +85,7 @@ dmat<-as.matrix(d)
 nms<-rownames(dmat)
 dt.fastme<-dt.fastme[nms,nms]
 dt.fastme<-as.dist(dt.fastme)
-plot(dt.fastme-d,ylab="residuals", cex=0.5,main="fastme")
+plot(dt.fastme-d,ylab="residuals",ylim=c(-0.4,0.4), cex=0.5,main="fastme")
 abline(h=0,lty=3)
 mt<-modelTest(as.phyDat(x),G=F, I=F)
 
